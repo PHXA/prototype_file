@@ -415,35 +415,41 @@
     }
 
     var inf_id=null
+    var is_body=false
     $(function(){
         // appendなどでjsによる新規要素の追加にあたりjqueryではhoverが使えない
         // http://mori-coding.blog.jp/archives/7399253.html
         $(document).on('mouseenter',".information_i",function () {
-            inf_id=get_inf_id()
-            $('#info_box_'+inf_id).css("opacity",'1');
+            [inf_id,is_body]=get_inf_id()
+            if(is_body){
+                var target = '#info_box_body_'+inf_id
+            }else{
+                var target = '#info_box_'+inf_id
+            }
+            $(target).css("opacity",'1');
         });
         $(document).on('mouseleave',".information_i",function () {
-            $('#info_box_'+inf_id).css("opacity",'0');
-        });
-
-        // bodよう
-        $(document).on('mouseenter',".information_i",function () {
-            inf_id=get_inf_id()
-            $('#info_box_body_'+inf_id).css("opacity",'1');
-        });
-        $(document).on('mouseleave',".information_i",function () {
-            $('#info_box_body_'+inf_id).css("opacity",'0');
+            if(is_body){
+                var target = '#info_box_body_'+inf_id
+            }else{
+                var target = '#info_box_'+inf_id
+            }
+            $(target).css("opacity",'0');
         });
     });
 
     function get_inf_id(){
         var inf_id=null
+        var is_body=false
         jQuery(":hover").each(function () { //カーソル位置の全要素を走査
             if($(this).attr("class")=='information_i'){
                 inf_id = $(this).attr('id').slice(-1);
+                if($(this).attr('id').split('_')[2]=='body'){
+                    is_body=true
+                }
             }
         });
-        return inf_id
+        return [inf_id,is_body]
     }
 
     let candidates = []
@@ -719,7 +725,7 @@
             body_candidates = body_candidates.concat(top3)
         }
     };
-    
+
     function click_previous_next(e){
         para_i =  Number(e.id.slice(-3,-2))
         array_index = Number(e.id.slice(-1))

@@ -52,47 +52,60 @@
                     <img src="image/logo3.svg" class="h-16 w-auto" alt="">
                 </div>
                 <div class="mt-2 bg-gray-orig shadow sm:rounded-lg">
-                    <div class="flex justify-center p-0 m-0">
-                        <h2 style="position:relative;">キャッチコピーを自動生成
-                            <span class="information_i">ⓘ</span>
-                            <div id="info_box">任意の単語を入れるだけで自動でキャッチコピーを生成してくれます！テンプレートのキーワードに従って単語を入力してみてください！（例：ターゲット→主婦，ベネフィット→若返る，商品→化粧品など）</div>
-                        </h2>
+                    <div class="flex justify-center p-0 m-0" style='padding-bottom: 10px;'>
+                        <h2>キャッチコピーを自動生成</h2>
                     </div>
                     <div class="flex justify-center p-0 m-0">
                         テンプレートを選択
                     </div>
-                    <select class="tmp_clm">
-                        <option value="">--Please choose an template--</option>
-                        <option value="dog">商品を知っていて今すぐでも欲しい人に向けて</option>
-                        <option value="dog">他の商品と比べて検討中な人に向けて</option>
-                        <option value="dog">商品は知らないが、ベネフィットに興味がある人に向けて</option>
-                    </select>
+                    <form name="myForm">
+                        <select class="tmp_clm" name=mySelect onchange="inputValue()">
+                            <option value="dog">カスタム</option>
+                            <option value="dog">商品を知っていて今すぐでも欲しい人がターゲット</option>
+                            <option value="dog">他の商品と比べて検討中な人がターゲット</option>
+                            <option value="dog">商品は知らないが、ベネフィットに興味がある人がターゲット</option>
+                        </select>
+                    </form>　
                     <div class="flex justify-center p-0 m-0">
                         <span>キーワードを入力</span>
                     </div>
                     <div id="keywords">
                         <div class="form-group" id="keyword1-group">
                             <div class="flex justify-center">
-                                <h1 class="keyword"><input oninput="changeflag()" placeholder = "ターゲット" type="text" id="keyword1" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;"　value=""></h1>
+                                <h1 class="keyword"><input oninput="changeflag()" placeholder = "キーワード" type="text" id="keyword1" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;" value=""></h1>
+                                <span style="position:relative;">
+                                    <span class="information_i" id="inf_i_1">ⓘ</span>
+                                    <div class="info_box" id="info_box_1">キャッチコピーに使いたいキーワードを入れてください</div>
+                                 </span>
                                 <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
                             </div>
                         </div>
                         <div class="form-group" id="keyword2-group">
-                            <div class="flex justify-center">
-                                <h1 class="keyword"><input oninput="changeflag()" placeholder = "ベネフィット" type="text" id="keyword2" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;"　value=""></h1>
+                            <div class="flex justify-center" style="position:relative;">
+                                <h1 class="keyword"><input oninput="changeflag()" placeholder = "キーワード" type="text" id="keyword2" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;" value=""></h1>
+                                <span style="position:relative;">
+                                    <span class="information_i" id="inf_i_2">ⓘ</span>
+                                    <div class="info_box" id="info_box_2">キャッチコピーに使いたいキーワードを入れてください</div>
+                                </span>
                                 <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
                             </div>
                         </div>
                         <div class="form-group" id="keyword3-group">
-                            <div class="flex justify-center">
-                                <h1 class="keyword"><input oninput="changeflag()" placeholder = "商品" type="text" id="keyword3" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;"　value=""></h1>
-                                <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
-                            </div>
+                            <div class="flex justify-center" style="position:relative;">
+                                <h1 class="keyword"><input oninput="changeflag()" placeholder = "キーワード" type="text" id="keyword3" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;" value=""></h1>
+                                <span style="position:relative;">
+                                    <span class="information_i" id="inf_i_3">ⓘ</span>
+                                    <div class="info_box" id="info_box_3">キャッチコピーに使いたいキーワードを入れてください</div>
+                                </span>
+                                <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">                            </div>
                         </div>
                     </div>
+                    <!-- <div class="flex justify-center p-0 m-0">
+                        <p style="font-weight: bold;" onclick="add_keyword()">キーワードを追加+</p>
+                    </div> -->
                     <div class="form-group">
                         <div class="flex justify-center">
-                            <button onclick="generate()" class="btn　p-0">
+                            <button onclick="return generate()" class="btn　p-0">
                                 <!-- <i class="fa fa-btn fa-plus"></i> <h1 class="p-0" id="generate-button">生成</h1> -->
                                 <h1 class="p-0" id="generate-button">生成</h1>
                             </button>
@@ -158,75 +171,107 @@
                 </div> -->
 
                 <div class="mt-4 bg-gray-orig shadow sm:rounded-lg">
-                <div class="flex justify-center p-0 m-0">
+                <div class="flex justify-center p-0 m-0" style="padding-bottom:10px;">
                     <h2>ボディコピーを自動生成</h2>
                 </div>
-                    <div class="flex justify-center">
-                        <span>段落の1文目を入力</span>
-                    </div>
-                    <div id="body-keywords">
-                        <div class="form-group" id="body-keyword1-group">
-                            <div class="flex justify-center">
-                                <h1 class="keyword"><textarea oninput="body_changeflag()" placeholder = "日常" type="text" id="body-keyword1" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;"　value=""></textarea></h1>
-                                <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
-                            </div>
-                        </div>
-                        <div class="form-group" id="body-keyword2-group">
-                            <div class="flex justify-center">
-                                <h1 class="keyword"><textarea oninput="body_changeflag()" placeholder = "どん底へ" type="text" id="body-keyword2" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;"　value=""></textarea></h1>
-                                <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
-                            </div>
-                        </div>
-                        <div class="form-group" id="body-keyword3-group">
-                            <div class="flex justify-center">
-                                <h1 class="keyword"><textarea oninput="body_changeflag()" placeholder = "商品に出会う" type="text" id="body-keyword3" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;"　value=""></textarea></h1>
-                                <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
-                            </div>
-                        </div>
-                        <div class="form-group" id="body-keyword4-group">
-                            <div class="flex justify-center">
-                                <h1 class="keyword"><textarea oninput="body_changeflag()" placeholder = "人生好転" type="text" id="body-keyword4" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;"　value=""></textarea></h1>
-                                <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
+                <div class="flex justify-center p-0 m-0">
+                    テンプレートを選択
+                </div>
+                <form name="myForm_body">
+                    <select class="tmp_clm" name=mySelect onchange="inputValueBody()">
+                        <option value="dog">カスタム</option>
+                        <option value="dog">日常の変化に訴えかけるボディコピー</option>
+                        <option value="dog">健康の維持に訴えかけるボディコピー</option>
+                        <option value="dog">時間の使い方に訴えかけるボディコピー</option>
+                    </select>
+                </form>　
+                <div class="flex justify-center">
+                    <span>段落の1文目を入力</span>
+                </div>
+                <div id="body-keywords">
+                    <div class="form-group" id="body-keyword1-group">
                         <div class="flex justify-center">
-                            <button onclick="body_generate()" class="btn　p-0">
-                                <!-- <i class="fa fa-btn fa-plus"></i> <h1 class="p-0" id="generate-button">生成</h1> -->
-                                <h1 class="p-0" id="body-generate-button">生成</h1>
-                            </button>
+                            <h1 class="keyword"><textarea oninput="body_changeflag()" placeholder = "1段落" type="text" id="body-keyword1" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;"　value=""></textarea></h1>
+                            <span style="position:relative;">
+                                <span class="information_i" id="inf_i_body_1">ⓘ</span>
+                                <div class="info_box" id="info_box_body_1">キャッチコピーに使いたいキーワードを入れてください</div>
+                            </span>
+                            <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
                         </div>
+                    </div>
+                    <div class="form-group" id="body-keyword2-group">
+                        <div class="flex justify-center">
+                            <h1 class="keyword"><textarea oninput="body_changeflag()" placeholder = "2段落" type="text" id="body-keyword2" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;"　value=""></textarea></h1>
+                            <span style="position:relative;">
+                                <span class="information_i" id="inf_i_body_2">ⓘ</span>
+                                <div class="info_box" id="info_box_body_2">キャッチコピーに使いたいキーワードを入れてください</div>
+                            </span>
+                            <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
+                        </div>
+                    </div>
+                    <div class="form-group" id="body-keyword3-group">
+                        <div class="flex justify-center">
+                            <h1 class="keyword"><textarea oninput="body_changeflag()" placeholder = "3段落" type="text" id="body-keyword3" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;"　value=""></textarea></h1>
+                            <span style="position:relative;">
+                                <span class="information_i" id="inf_i_body_3">ⓘ</span>
+                                <div class="info_box" id="info_box_body_3">キャッチコピーに使いたいキーワードを入れてください</div>
+                            </span>
+                            <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
+                        </div>
+                    </div>
+                    <div class="form-group" id="body-keyword4-group">
+                        <div class="flex justify-center">
+                            <h1 class="keyword"><textarea oninput="body_changeflag()" placeholder = "4段落" type="text" id="body-keyword4" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;"　value=""></textarea></h1>
+                            <span style="position:relative;">
+                                <span class="information_i" id="inf_i_body_4">ⓘ</span>
+                                <div class="info_box" id="info_box_body_4">キャッチコピーに使いたいキーワードを入れてください</div>
+                            </span>
+                            <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="flex justify-center">
+                        <button onclick="return body_generate()" class="btn　p-0">
+                            <!-- <i class="fa fa-btn fa-plus"></i> <h1 class="p-0" id="generate-button">生成</h1> -->
+                            <h1 class="p-0" id="body-generate-button">生成</h1>
+                        </button>
                     </div>
                 </div>
                 <div class="mt-2 bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                        <div class="p-6">
-                            <!-- <input type="radio" name="body-candidate" checked="checked" style="float: left;"> -->
-                                <div class="cand_body" id = "body-candidate1">
-                                候補１
-                                </div>
-                                <div style="float: right;">
-                                    <a  class="tweet-button" href="#" target="_blank_" rel="nofollow"><i class="fab fa-twitter"></i>Tweet</a>
-                                </div>
+                    <div class="p-6" >
+                        <!-- <input type="radio" name="body-candidate" checked="checked" style="float: left;"> -->
+                        
+                        <div class="cand_body" id = "body-candidate1">段落1の候補</div>
+                        <div style="float: right;">
+                            <button id='body_ct1' class="ct" onclick="copyToClipBody(1)">Copy Text!</button>
+                            <a  class="tweet-button" href="#" target="_blank_" rel="nofollow"><i class="fab fa-twitter"></i>Tweet</a>
                         </div>
-                        <div class="p-6">
-                            <!-- <input type="radio" name="body-candidate" style="float: left;"> -->
-                                <div class="cand_body" id = "body-candidate2">
-                                候補１
-                                </div>
-                                <div style="float: right;">
-                                    <a  class="tweet-button" href="#" target="_blank_" rel="nofollow"><i class="fab fa-twitter"></i>Tweet</a>
-                                </div>
+                    </div>
+                    <div class="p-6">
+                        <!-- <input type="radio" name="body-candidate" style="float: left;"> -->
+                        <div class="cand_body" id = "body-candidate2">段落2の候補</div>
+                        <div style="float: right;">
+                            <button id='body_ct2' class="ct" onclick="copyToClipBody(2)">Copy Text!</button>
+                            <a  class="tweet-button" href="#" target="_blank_" rel="nofollow"><i class="fab fa-twitter"></i>Tweet</a>
                         </div>
-                        <div class = "p-6">
-                            <!-- <input type="radio" name="body-candidate" style="float: left;"> -->
-                                <div class="cand_body" id = "body-candidate3">
-                                候補１
-                                </div>
-                                <div style="float: right;">
-                                    <a  class="tweet-button" href="#" target="_blank_" rel="nofollow"><i class="fab fa-twitter"></i>Tweet</a>
-                                </div>
+                    </div>
+                    <div class = "p-6">
+                        <!-- <input type="radio" name="body-candidate" style="float: left;"> -->
+                        <div class="cand_body" id = "body-candidate3">段落3の候補</div>
+                        <div style="float: right;">
+                            <button id='body_ct3' class="ct" onclick="copyToClipBody(3)">Copy Text!</button>
+                            <a  class="tweet-button" href="#" target="_blank_" rel="nofollow"><i class="fab fa-twitter"></i>Tweet</a>
                         </div>
+                    </div>
+                    <div class = "p-6">
+                        <!-- <input type="radio" name="body-candidate" style="float: left;"> -->
+                        <div class="cand_body" id = "body-candidate4">段落4の候補</div>
+                        <div style="float: right;">
+                            <button id='body_ct4' class="ct" onclick="copyToClipBody(4)">Copy Text!</button>
+                            <a  class="tweet-button" href="#" target="_blank_" rel="nofollow"><i class="fab fa-twitter"></i>Tweet</a>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -267,16 +312,139 @@
 <!-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
 <script>
 
-    $(function(){
-        $(".information_i").hover(
-            function () {
-                $('#info_box').css("opacity",'1');
-            },
-            function () {
-                $("#info_box").css("opacity",'0');
+    function make_keyword_form(i,placeholder,info_box_itext){
+        keyword_form = '<div class="form-group" id="keyword' + i + '-group">'
+                        +'<div class="flex justify-center" style="position:relative;">'
+                        +'<h1 class="keyword">'
+                        +'<input id="keyword' + i + '" oninput="changeflag()" placeholder = "' + placeholder + '" type="text" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;">'
+                        + '</h1>'
+                        + '<span style="position:relative;">'
+                        + '<span class="information_i" id="inf_i_ ' + i + '">ⓘ</span>'
+                        + '<div class="info_box" id="info_box_' + i + '">' + info_box_itext + '</div>'
+                        + '</span>'
+                        + '<img onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">'
+                        + '</div>'
+                        + '</div>'
+        document.getElementById('keywords').insertAdjacentHTML('beforeend',keyword_form);
+    };
+
+    function make_body_form(i,placeholder,info_box_itext){
+        keyword_form = '<div class="form-group" id="body-keyword' + i + '-group">'
+                        + '<div class="flex justify-center">'
+                        + '<h1 class="keyword"><textarea oninput="body_changeflag()" placeholder = "' + placeholder + '" type="text" id="body-keyword' + i + '" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;"　value=""></textarea></h1>'
+                        + '<span style="position:relative;">'
+                        + '<span class="information_i" id="inf_i_body_' + i + '">ⓘ</span>'
+                        + '<div class="info_box" id="info_box_body_' + i + '">' + info_box_itext + '</div>'
+                        + '</span>'
+                        + '<img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">'
+                        + '</div>'
+                        + '</div>'
+        document.getElementById('body-keywords').insertAdjacentHTML('beforeend',keyword_form);
+    };
+
+    function input_all_clear(){
+        var all_elements = document.getElementsByClassName('form-group')
+        var array = Array.prototype.slice.call(all_elements);//配列に変換
+        for (let i = 0; i < array.length; i += 1) {
+            if(array[i].id.slice(0,7)=='keyword'){
+                array[i].remove()
             }
-        );
+        }
+    };
+
+    function input_all_clear_body(){
+        var all_elements = document.getElementsByClassName('form-group')
+        var array = Array.prototype.slice.call(all_elements);//配列に変換
+        for (let i = 0; i < array.length; i += 1) {
+            if(array[i].id.slice(0,12)=='body-keyword'){
+                array[i].remove()
+            }
+        }
+    };
+
+    function inputValue() {
+        // selectで選択した値を取得
+        input_all_clear()
+        var index = document.myForm.mySelect.selectedIndex;
+        var value= document.myForm.mySelect.options[index].innerText;
+        if(index==1){
+            make_keyword_form(1,'ターゲット','例：主婦，学生，10代，20代，男性，女性')
+            make_keyword_form(2,'商品','例：スマホ，化粧品，PC，書籍，鏡')
+            make_keyword_form(3,'オファー','例：')
+            make_keyword_form(4,'ベネフィット','例：若返る，賢くなる，時間短縮，お金持ちになれる')
+        }else if(index==2){
+            make_keyword_form(1,'ターゲット','例：主婦，学生，10代，20代，男性，女性')
+            make_keyword_form(2,'ベネフィット','例：若返る，賢くなる，時間短縮，お金持ちになれる')
+            make_keyword_form(3,'他との違い（実績，権威性，特徴など','例：100万部突破，10人に一人は利用している')
+        }else if(index==3){
+            make_keyword_form(1,'ターゲット','例：主婦，学生，10代，20代，男性，女性')
+            make_keyword_form(2,'ベネフィット','例：若返る，賢くなる，時間短縮，お金持ちになれる')
+            make_keyword_form(3,'商品','例：スマホ，化粧品，PC，書籍，鏡')
+        }else if(index==0){
+            make_keyword_form(1,'キーワード','キャッチコピーに使いたいキーワードを入れてください')
+            make_keyword_form(2,'キーワード','キャッチコピーに使いたいキーワードを入れてください')
+            make_keyword_form(3,'キーワード','キャッチコピーに使いたいキーワードを入れてください')
+        }
+    }
+
+    function inputValueBody(){
+        input_all_clear_body()
+        var index = document.myForm_body.mySelect.selectedIndex;
+        var value= document.myForm_body.mySelect.options[index].innerText;
+        if(index==1){
+            make_body_form(1,'日常','例：会社に通う退屈な毎日')
+            make_body_form(2,'どん底','例：多額の借金を背負う')
+            make_body_form(3,'商品に出会う','例：新しいスマホを購入した')
+            make_body_form(4,'人生好転','例：スマホ一台で年収1000万円を達成した')
+        }else if(index==2){
+            make_body_form(1,'体の変化','例：先月よりも大重が5キロ太った')
+            make_body_form(2,'不安','例：このままでは来月にも5キロ太ってしまうことになる')
+            make_body_form(3,'商品に出会う','例：飲むだけで体重がサプリがあることを知った')
+            make_body_form(4,'人生好転','例：今ではサプリがあるだけで体重を気にしなくて済むようになった')
+        }else if(index==3){
+            make_body_form(1,'時間がない','例：仕事が忙しくて自由な時間が作れない')
+            make_body_form(2,'仕事が忙しい','例：上司から新しい仕事が割り振られてさらに時間がなくなった')
+            make_body_form(3,'仕事を時短','例：新しく開発されたシステムにより仕事の時間が大幅に減った')
+            make_body_form(4,'自由が増えた','例：自分の好きな趣味に没頭できる時間が増えた')
+        }else if(index==0){
+            make_body_form(1,'1段落','ボディコピーに使いたい文章を入れてください')
+            make_body_form(2,'2段落','ボディコピーに使いたい文章を入れてください')
+            make_body_form(3,'3段落','ボディコピーに使いたい文章を入れてください')
+            make_body_form(4,'4段落','ボディコピーに使いたい文章を入れてください')
+        }
+    }
+
+    var inf_id=null
+    $(function(){
+        // appendなどでjsによる新規要素の追加にあたりjqueryではhoverが使えない
+        // http://mori-coding.blog.jp/archives/7399253.html
+        $(document).on('mouseenter',".information_i",function () {
+            inf_id=get_inf_id()
+            $('#info_box_'+inf_id).css("opacity",'1');
+        });
+        $(document).on('mouseleave',".information_i",function () {
+            $('#info_box_'+inf_id).css("opacity",'0');
+        });
+
+        // bodよう
+        $(document).on('mouseenter',".information_i",function () {
+            inf_id=get_inf_id()
+            $('#info_box_body_'+inf_id).css("opacity",'1');
+        });
+        $(document).on('mouseleave',".information_i",function () {
+            $('#info_box_body_'+inf_id).css("opacity",'0');
+        });
     });
+
+    function get_inf_id(){
+        var inf_id=null
+        jQuery(":hover").each(function () { //カーソル位置の全要素を走査
+            if($(this).attr("class")=='information_i'){
+                inf_id = $(this).attr('id').slice(-1);
+            }
+        });
+        return inf_id
+    }
 
     let candidates = []
     let FIRST = true
@@ -284,7 +452,7 @@
         FIRST = true
         document.getElementById("generate-button").innerHTML = "生成";
         document.getElementsByTagName("button")[0].style.backgroundColor = "#dc143c";
-        add_keyword()
+        // add_keyword()
     }
 
     function add_keyword(){
@@ -301,7 +469,7 @@
             keyword_form = '<div class="form-group" id="keyword'
                         +(parseInt(lst[lst.length-1].id.slice(-1)) + 1).toString()
                         +'-group">'
-                        +'<div class="flex justify-center">'
+                        +'<div class="flex justify-center" style="position:relative;">'
                         +'<h1 class="keyword">'
                         +'<input id="keyword'
                         +(parseInt(lst[lst.length-1].id.slice(-1)) + 1).toString()
@@ -316,9 +484,10 @@
         else if (empty_lst.length > 2){
             for (var j in empty_lst) {
                 if (lst[empty_lst[j]] != document.activeElement){
-                if (lst[empty_lst[j]].placeholder != "商品" && lst[empty_lst[j]].placeholder != "ベネフィット" && lst[empty_lst[j]].placeholder != "ターゲット")
-                    document.getElementById(lst[empty_lst[j]].id+"-group").remove()
-                    break
+                    if (lst[empty_lst[j]].placeholder != "商品" && lst[empty_lst[j]].placeholder != "ベネフィット" && lst[empty_lst[j]].placeholder != "ターゲット"){
+                        document.getElementById(lst[empty_lst[j]].id+"-group").remove()
+                        break
+                    }
                 }
             }
         }
@@ -333,13 +502,26 @@
     }
 
 
-    function generate_assign(element,hypo){
+    function generate_assign(element,hypo,is_body,array_index,para_i){
         // console.log(element.nextElementSibling.childNodes[0]href)
         // console.log(element.nextElementSibling)
         // console.log()
         // console.log(element.nextElementSibling.childNodes[0].href)
-        element.innerHTML = hypo;
-
+        if(is_body){
+            if(array_index==0){
+                pre = 5
+                nex = 1
+            }else if(array_index==5){
+                pre = 4
+                nex = 0
+            }else{
+                pre = array_index - 1
+                nex = array_index+1
+            }
+            element.innerHTML = '<div class="pre_nex_css" onclick="click_previous_next(this)" id = "pre_' + para_i + '_' + pre + '"style="color:black;font-weight: bold;">◀︎ previous</div><br>' + hypo + '<div class="pre_nex_css" onclick = "click_previous_next(this)" id = "nex_' + para_i + '_'  + nex + '" style="color:black;font-weight: bold;"><br>next ▶︎</div>';
+        }else{
+            element.innerHTML = hypo;
+        }
         keyword_strings = document.getElementsByTagName("input")
         keyword_lst = []
         for (var i in keyword_strings){
@@ -351,55 +533,67 @@
     }
 
     async function generate() {
-    if (FIRST){
-        lst = document.getElementsByTagName("input")
-        query_lst = []
-        queries = ""
-        candidates = []
-        for (var i in lst){
-            if (lst[i].value && lst[i].id.slice(0,7) == "keyword") {
-                query_lst.push(lst[i].value)
+
+        if (FIRST){
+
+            var is_empty_keyword = false
+            var obj_keyword = document.getElementsByTagName('input')
+            for(var i=0;i<obj_keyword.length;i++){
+                keyword_text = obj_keyword[i].value
+                if(keyword_text==''){
+                    alert('全てのキーワードを埋めてください！')
+                    return false
+                }
             }
+
+            lst = document.getElementsByTagName("input")
+            query_lst = []
+            queries = ""
+            candidates = []
+            for (var i in lst){
+                if (lst[i].value && lst[i].id.slice(0,7) == "keyword") {
+                    query_lst.push(lst[i].value)
+                }
+            }
+
+            document.getElementById("generate-button").innerHTML = "生成中…";
+            const res = await fetch("http://35.78.140.215:8000/translate",
+                {method: 'POST',mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body:JSON.stringify({
+                "wordss": [
+                query_lst
+                ]
+            })
+            });
+            res_json = await res.json()
+
+            console.log(res_json)
+
+            for (var i in res_json["results"][0]){
+                candidates.push(res_json["results"][0][i]["hypo"])
+            }
+            // console.log(candidates)
+            top3 = candidates.splice(0,3)
+            
+            generate_assign(document.getElementById("candidate1"),top3[0]);
+            generate_assign(document.getElementById("candidate2"),top3[1]);
+            generate_assign(document.getElementById("candidate3"),top3[2]);
+
+            candidates = candidates.concat(top3)
+            document.getElementById("generate-button").innerHTML = "次の候補";
+            document.getElementsByTagName("button")[0].style.backgroundColor = "#3969F8";
+            FIRST = false
+
+        } else{
+            top3 = candidates.splice(0,3)
+            generate_assign(document.getElementById("candidate1"),top3[0]);
+            generate_assign(document.getElementById("candidate2"),top3[1]);
+            generate_assign(document.getElementById("candidate3"),top3[2]);
+            candidates = candidates.concat(top3)
         }
-
-        document.getElementById("generate-button").innerHTML = "生成中…";
-        const res = await fetch("http://35.78.140.215:8000/translate",
-            {method: 'POST',mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body:JSON.stringify({
-            "wordss": [
-            query_lst
-            ]
-        })
-        });
-        res_json = await res.json()
-
-        console.log(res_json)
-
-        for (var i in res_json["results"][0]){
-            candidates.push(res_json["results"][0][i]["hypo"])
-        }
-        // console.log(candidates)
-        top3 = candidates.splice(0,3)
-        alert(top3)
-        generate_assign(document.getElementById("candidate1"),top3[0]);
-        generate_assign(document.getElementById("candidate2"),top3[1]);
-        generate_assign(document.getElementById("candidate3"),top3[2]);
-
-        candidates = candidates.concat(top3)
-        document.getElementById("generate-button").innerHTML = "次の候補";
-        document.getElementsByTagName("button")[0].style.backgroundColor = "#3969F8";
-        FIRST = false
-
-    } else{
-        top3 = candidates.splice(0,3)
-        generate_assign(document.getElementById("candidate1"),top3[0]);
-        generate_assign(document.getElementById("candidate2"),top3[1]);
-        generate_assign(document.getElementById("candidate3"),top3[2]);
-        candidates = candidates.concat(top3)
-    }
     };
 
     function copyToClip(i){
@@ -410,6 +604,16 @@
         navigator.clipboard.writeText(content) 
         document.getElementById('ct'+i).innerHTML="Copy OK!"
         setTimeout(() => document.getElementById('ct'+i).innerHTML = 'Copy Text', 1000)
+    }
+
+    function copyToClipBody(i){
+        // https://don-bu-rakko.com/%E3%80%90%E8%B6%85%E7%B0%A1%E5%8D%98%E3%80%91javascript-%E3%81%A7-%E3%83%9C%E3%82%BF%E3%83%B3%E3%82%92%E6%8A%BC%E3%81%97%E3%81%9F%E3%82%89%E3%82%B3%E3%83%94%E3%83%BC-%E3%82%92%E5%AE%9F%E8%A3%85/
+        // https://www.delftstack.com/ja/howto/javascript/javascript-copy-to-clipboard/
+        var target="body-candidate"+i;
+        var content = document.getElementById(target).innerHTML;
+        navigator.clipboard.writeText(content) 
+        document.getElementById('body_ct'+i).innerHTML="Copy OK!"
+        setTimeout(() => document.getElementById('body_ct'+i).innerHTML = 'Copy Text', 1000)
     }
 
     let flg_et=true
@@ -433,74 +637,94 @@
     }
 
     async function body_generate() {
-    if (BODY_FIRST){
-        lst = document.getElementsByTagName("textarea")
-        query_lst = []
-        queries = ""
-        body_candidates = []
 
-        for (var i in lst){
-            if (lst[i].value) {
-                query_lst.push(lst[i].value)
+        if (BODY_FIRST){
+
+            var is_empty_textarea = false
+            var obj_textarea = document.getElementsByTagName('textarea')
+            for(var i=0;i<obj_textarea.length;i++){
+                textarea_text = obj_textarea[i].value
+                if(textarea_text==''){
+                    alert('全ての段落を埋めてください！')
+                    return false
+                }
             }
+            
+            lst = document.getElementsByTagName("textarea")
+            query_lst = []
+            queries = ""
+            body_candidates = []
+
+            for (var i in lst){
+                if (lst[i].value) {
+                    query_lst.push(lst[i].value)
+                }
+            }
+
+            document.getElementById("body-generate-button").innerHTML = "生成中…";
+
+            next_sents = query_lst.slice(1);
+            next_sents.push("_END_")
+
+            const res = await fetch("http://18.176.183.89:8000/translate",
+                {method: 'POST',mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body:JSON.stringify({
+                "first_sents": query_lst,
+                "next_sents": next_sents
+                })
+            });
+            res_json = await res.json()
+
+            console.log(res_json)
+
+            for (var i in res_json["results"][0]){
+                body_candidates[i] = ""
+                for (var j in res_json["results"]){
+                    body_candidates[i] += res_json["results"][j][i]["hypo"] + "<br><br>"
+                }
+            }
+
+            // for (var i in res_json["results"]){
+            //   body_candidates.push([])
+            //   for (var j in res_json["results"][i]){
+            //     body_candidates[i].push(res_json["results"][i][j]["hypo"])
+            //   }
+            // }
+
+            console.log(JSON.stringify(body_candidates,null,'\t'))
+
+            // console.log(candidates)
+            top3 = body_candidates.splice(0,3)
+
+            for(var i in res_json["results"]){
+                generate_assign(document.getElementById("body-candidate" + String(Number(i) + 1)),res_json["results"][i][0]["hypo"],true,0,i);
+            }
+            
+            body_candidates = body_candidates.concat(top3)
+
+            document.getElementById("body-generate-button").innerHTML = "生成";
+            // document.getElementById("body-generate-button").innerHTML = "次の候補";
+            // document.getElementsByTagName("button")[4].style.backgroundColor = "#3969F8";
+            // BODY_FIRST = false
+
+        } else{
+            top3 = body_candidates.splice(0,3)
+            generate_assign(document.getElementById("body-candidate1"),top3[0],true);
+            generate_assign(document.getElementById("body-candidate2"),top3[1],true);
+            generate_assign(document.getElementById("body-candidate3"),top3[2],true);
+            body_candidates = body_candidates.concat(top3)
         }
-
-        document.getElementById("body-generate-button").innerHTML = "生成中…";
-
-        next_sents = query_lst.slice(1);
-        next_sents.push("_END_")
-
-        const res = await fetch("http://18.176.183.89:8000/translate",
-        {method: 'POST',mode: 'cors',
-        headers: {
-            'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body:JSON.stringify({
-        "first_sents": query_lst,
-        "next_sents": next_sents
-        })
-    });
-        res_json = await res.json()
-
-        console.log(res_json)
-
-        for (var i in res_json["results"][0]){
-        body_candidates[i] = ""
-        for (var j in res_json["results"]){
-            body_candidates[i] += res_json["results"][j][i]["hypo"] + "<br><br>"
-        }
-        }
-
-        // for (var i in res_json["results"]){
-        //   body_candidates.push([])
-        //   for (var j in res_json["results"][i]){
-        //     body_candidates[i].push(res_json["results"][i][j]["hypo"])
-        //   }
-        // }
-
-        console.log(JSON.stringify(body_candidates,null,'\t'))
-
-        // console.log(candidates)
-        top3 = body_candidates.splice(0,3)
-
-        generate_assign(document.getElementById("body-candidate1"),top3[0]);
-        generate_assign(document.getElementById("body-candidate2"),top3[1]);
-        generate_assign(document.getElementById("body-candidate3"),top3[2]);
-
-        body_candidates = body_candidates.concat(top3)
-        document.getElementById("body-generate-button").innerHTML = "次の候補";
-        document.getElementsByTagName("button")[4].style.backgroundColor = "#3969F8";
-        BODY_FIRST = false
-
-    } else{
-        top3 = body_candidates.splice(0,3)
-        generate_assign(document.getElementById("body-candidate1"),top3[0]);
-        generate_assign(document.getElementById("body-candidate2"),top3[1]);
-        generate_assign(document.getElementById("body-candidate3"),top3[2]);
-        body_candidates = body_candidates.concat(top3)
-    }
     };
+    
+    function click_previous_next(e){
+        para_i =  Number(e.id.slice(-3,-2))
+        array_index = Number(e.id.slice(-1))
+        generate_assign(document.getElementById("body-candidate" + String(Number(para_i) + 1)),res_json["results"][para_i][array_index]["hypo"],true,array_index,para_i);
+    }
 
 </script>
 
@@ -558,6 +782,10 @@
         background-color: #98fb98;
         border-radius: 0.5rem;
     }
+    #body-candidate4{
+        background-color: #98c8fb;
+        border-radius: 0.5rem;
+    }
 
     input::placeholder {
         font-size: 0.6em;
@@ -605,22 +833,25 @@
     #ct3:hover{
         opacity: 0.8;
     }
-    #info_box{
+    .info_box{
         font-size: x-small;
         color:white;
         padding:10px;
-        opacity: 1;
+        opacity: 0;
         width:150px;
         /* height: 65px; */
         background: black;
         position:absolute;
         top:-58px;
-        right:-170px;
+        right:-150px;
     }
     .tmp_clm{
         width:100%;
         height: 30px;
         border: 1px solid black;
         text-align: center;
+    }
+    .pre_nex_css{
+        cursor: pointer;
     }
 </style>

@@ -45,74 +45,82 @@
                     @endauth
                 </div>
             @endif -->
-            
 
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8" >
+            
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                     <img src="image/logo3.svg" class="h-16 w-auto" alt="">
                 </div>
-                <div class="mt-2 bg-gray-orig shadow sm:rounded-lg">
-                    <div class="flex justify-center p-0 m-0" style='padding-bottom: 10px;'>
-                        <h2>キャッチコピーを自動生成</h2>
-                    </div>
-                    <div class="flex justify-center p-0 m-0">
-                        テンプレートを選択
-                    </div>
-                    <form name="myForm">
-                        <select class="tmp_clm" name=mySelect onchange="inputValue()">
-                            <option value="dog">カスタム</option>
-                            <option value="dog">商品を知っていて今すぐでも欲しい人がターゲット</option>
-                            <option value="dog">他の商品と比べて検討中な人がターゲット</option>
-                            <option value="dog">商品は知らないが、ベネフィットに興味がある人がターゲット</option>
-                        </select>
-                    </form>　
-                    <div class="flex justify-center p-0 m-0">
-                        <span>キーワードを入力</span>
-                    </div>
-                    <div id="keywords">
-                        <div class="form-group" id="keyword1-group">
-                            <div class="flex justify-center">
-                                <h1 class="keyword"><input oninput="changeflag()" placeholder = "キーワード" type="text" id="keyword1" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;" value=""></h1>
-                                <span style="position:relative;">
-                                    <span class="information_i" id="inf_i_1">ⓘ</span>
-                                    <div class="info_box" id="info_box_1">キャッチコピーに使いたいキーワードを入れてください</div>
-                                 </span>
-                                <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
-                            </div>
-                        </div>
-                        <div class="form-group" id="keyword2-group">
-                            <div class="flex justify-center" style="position:relative;">
-                                <h1 class="keyword"><input oninput="changeflag()" placeholder = "キーワード" type="text" id="keyword2" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;" value=""></h1>
-                                <span style="position:relative;">
-                                    <span class="information_i" id="inf_i_2">ⓘ</span>
-                                    <div class="info_box" id="info_box_2">キャッチコピーに使いたいキーワードを入れてください</div>
-                                </span>
-                                <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
-                            </div>
-                        </div>
-                        <div class="form-group" id="keyword3-group">
-                            <div class="flex justify-center" style="position:relative;">
-                                <h1 class="keyword"><input oninput="changeflag()" placeholder = "キーワード" type="text" id="keyword3" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;" value=""></h1>
-                                <span style="position:relative;">
-                                    <span class="information_i" id="inf_i_3">ⓘ</span>
-                                    <div class="info_box" id="info_box_3">キャッチコピーに使いたいキーワードを入れてください</div>
-                                </span>
-                                <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="flex justify-center p-0 m-0">
-                        <p style="font-weight: bold;" onclick="add_keyword()">キーワードを追加+</p>
-                    </div> -->
-                    <div class="form-group">
-                        <div class="flex justify-center">
-                            <button onclick="return generate()" class="btn　p-0">
-                                <!-- <i class="fa fa-btn fa-plus"></i> <h1 class="p-0" id="generate-button">生成</h1> -->
-                                <h1 class="p-0" id="generate-button">生成</h1>
-                            </button>
-                        </div>
-                    </div>
+
+                <div style="font-size:small;text-align:center;line-height:50px;width:100%;height:50px;">
+                    <div class="tab" onclick="tabChange(this)" id="catchon" style="background-color: #fa9898;">キャッチコピーを自動生成</div>
+                    <div class="tab" onclick="tabChange(this)" id="bodyon" style="background-color:#98facc">ボディコピーを自動生成</div>
                 </div>
-                <div class="mt-2 bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                
+                <div id="catch-copy">
+                    <div class="mt-2 bg-gray-orig shadow sm:rounded-lg">
+                        <div class="flex justify-center p-0 m-0" style='padding-bottom: 10px;'>
+                            <h2>キャッチコピーを自動生成</h2>
+                        </div>
+                        <div class="flex justify-center p-0 m-0">
+                            テンプレートを選択
+                        </div>
+                        <form name="myForm">
+                            <select class="tmp_clm" name=mySelect onchange="inputValue()">
+                                <option value="dog">カスタム</option>
+                                <option value="dog">商品を知っていて今すぐでも欲しい人がターゲット</option>
+                                <option value="dog">他の商品と比べて検討中な人がターゲット</option>
+                                <option value="dog">商品は知らないが、ベネフィットに興味がある人がターゲット</option>
+                            </select>
+                        </form>　
+                        <div class="flex justify-center p-0 m-0">
+                            <span>キーワードを入力</span>
+                        </div>
+                        <div id="keywords">
+                            <div class="form-group" id="keyword1-group">
+                                <div class="flex justify-center">
+                                    <h1 class="keyword"><input oninput="changeflag()" placeholder = "キーワード" type="text" id="keyword1" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;" value=""></h1>
+                                    <span style="position:relative;">
+                                        <span class="information_i" id="inf_i_1">ⓘ</span>
+                                        <div class="info_box" id="info_box_1">キャッチコピーに使いたいキーワードを入れてください</div>
+                                    </span>
+                                    <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
+                                </div>
+                            </div>
+                            <div class="form-group" id="keyword2-group">
+                                <div class="flex justify-center" style="position:relative;">
+                                    <h1 class="keyword"><input oninput="changeflag()" placeholder = "キーワード" type="text" id="keyword2" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;" value=""></h1>
+                                    <span style="position:relative;">
+                                        <span class="information_i" id="inf_i_2">ⓘ</span>
+                                        <div class="info_box" id="info_box_2">キャッチコピーに使いたいキーワードを入れてください</div>
+                                    </span>
+                                    <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
+                                </div>
+                            </div>
+                            <div class="form-group" id="keyword3-group">
+                                <div class="flex justify-center" style="position:relative;">
+                                    <h1 class="keyword"><input oninput="changeflag()" placeholder = "キーワード" type="text" id="keyword3" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;" value=""></h1>
+                                    <span style="position:relative;">
+                                        <span class="information_i" id="inf_i_3">ⓘ</span>
+                                        <div class="info_box" id="info_box_3">キャッチコピーに使いたいキーワードを入れてください</div>
+                                    </span>
+                                    <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">                            </div>
+                            </div>
+                        </div>
+                        <!-- <div class="flex justify-center p-0 m-0">
+                            <p style="font-weight: bold;" onclick="add_keyword()">キーワードを追加+</p>
+                        </div> -->
+                        <div class="form-group">
+                            <div class="flex justify-center">
+                                <button onclick="return generate()" class="btn　p-0">
+                                    <!-- <i class="fa fa-btn fa-plus"></i> <h1 class="p-0" id="generate-button">生成</h1> -->
+                                    <h1 class="p-0" id="generate-button">生成</h1>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-2 bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                         <div class="p-6">
                             <!-- <input type="radio" name="paragraph_candidate" checked="checked" style="float: left;"> -->
                                 <!-- <div onclick="editText(1)" id="c_wrp_1"><div class="cand_body" id = "candidate1">候補１</div></div> -->
@@ -138,6 +146,7 @@
                                     <a  class="tweet-button" href="#" target="_blank_" rel="nofollow"><i class="fab fa-twitter"></i>Tweet</a>
                                 </div>
                         </div>
+                    </div>
                 </div>
 
                 <!-- <div class="mt-4 bg-gray-orig shadow sm:rounded-lg">
@@ -169,137 +178,138 @@
                     </select>
                 </div>
                 </div> -->
-
-                <div class="mt-4 bg-gray-orig shadow sm:rounded-lg">
-                <div class="flex justify-center p-0 m-0" style="padding-bottom:10px;">
-                    <h2>ボディコピーを自動生成</h2>
-                </div>
-                <div class="flex justify-center p-0 m-0">
-                    テンプレートを選択
-                </div>
-                <form name="myForm_body">
-                    <select class="tmp_clm" name=mySelect onchange="inputValueBody()">
-                        <option value="dog">カスタム</option>
-                        <option value="dog">日常の変化に訴えかけるボディコピー</option>
-                        <option value="dog">健康の維持に訴えかけるボディコピー</option>
-                        <option value="dog">時間の使い方に訴えかけるボディコピー</option>
-                    </select>
-                </form>　
-                <div class="flex justify-center">
-                    <span>段落の1文目を入力</span>
-                </div>
-                <div id="body-keywords">
-                    <div class="form-group" id="body-keyword1-group">
+            
+                <div id="body-copy">
+                    <div class="mt-4 bg-gray-orig shadow sm:rounded-lg">
+                        <div class="flex justify-center p-0 m-0" style="padding-bottom:10px;">
+                            <h2>ボディコピーを自動生成</h2>
+                        </div>
+                        <div class="flex justify-center p-0 m-0">
+                            テンプレートを選択
+                        </div>
+                        <form name="myForm_body">
+                            <select class="tmp_clm" name=mySelect onchange="inputValueBody()">
+                                <option value="dog">カスタム</option>
+                                <option value="dog">日常の変化に訴えかけるボディコピー</option>
+                                <option value="dog">健康の維持に訴えかけるボディコピー</option>
+                                <option value="dog">時間の使い方に訴えかけるボディコピー</option>
+                            </select>
+                        </form>　
                         <div class="flex justify-center">
-                            <h1 class="keyword"><textarea oninput="body_changeflag()" placeholder = "1段落" type="text" id="body-keyword1" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;"　value=""></textarea></h1>
-                            <span style="position:relative;">
-                                <span class="information_i" id="inf_i_body_1">ⓘ</span>
-                                <div class="info_box" id="info_box_body_1">キャッチコピーに使いたいキーワードを入れてください</div>
-                            </span>
-                            <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
+                            <span>段落の1文目を入力</span>
                         </div>
-                    </div>
-                    <div class="form-group" id="body-keyword2-group">
-                        <div class="flex justify-center">
-                            <h1 class="keyword"><textarea oninput="body_changeflag()" placeholder = "2段落" type="text" id="body-keyword2" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;"　value=""></textarea></h1>
-                            <span style="position:relative;">
-                                <span class="information_i" id="inf_i_body_2">ⓘ</span>
-                                <div class="info_box" id="info_box_body_2">キャッチコピーに使いたいキーワードを入れてください</div>
-                            </span>
-                            <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
+                        <div id="body-keywords">
+                            <div class="form-group" id="body-keyword1-group">
+                                <div class="flex justify-center">
+                                    <h1 class="keyword"><textarea oninput="body_changeflag()" placeholder = "1段落" type="text" id="body-keyword1" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;"　value=""></textarea></h1>
+                                    <span style="position:relative;">
+                                        <span class="information_i" id="inf_i_body_1">ⓘ</span>
+                                        <div class="info_box" id="info_box_body_1">キャッチコピーに使いたいキーワードを入れてください</div>
+                                    </span>
+                                    <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
+                                </div>
+                            </div>
+                            <div class="form-group" id="body-keyword2-group">
+                                <div class="flex justify-center">
+                                    <h1 class="keyword"><textarea oninput="body_changeflag()" placeholder = "2段落" type="text" id="body-keyword2" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;"　value=""></textarea></h1>
+                                    <span style="position:relative;">
+                                        <span class="information_i" id="inf_i_body_2">ⓘ</span>
+                                        <div class="info_box" id="info_box_body_2">キャッチコピーに使いたいキーワードを入れてください</div>
+                                    </span>
+                                    <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
+                                </div>
+                            </div>
+                            <div class="form-group" id="body-keyword3-group">
+                                <div class="flex justify-center">
+                                    <h1 class="keyword"><textarea oninput="body_changeflag()" placeholder = "3段落" type="text" id="body-keyword3" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;"　value=""></textarea></h1>
+                                    <span style="position:relative;">
+                                        <span class="information_i" id="inf_i_body_3">ⓘ</span>
+                                        <div class="info_box" id="info_box_body_3">キャッチコピーに使いたいキーワードを入れてください</div>
+                                    </span>
+                                    <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
+                                </div>
+                            </div>
+                            <div class="form-group" id="body-keyword4-group">
+                                <div class="flex justify-center">
+                                    <h1 class="keyword"><textarea oninput="body_changeflag()" placeholder = "4段落" type="text" id="body-keyword4" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;"　value=""></textarea></h1>
+                                    <span style="position:relative;">
+                                        <span class="information_i" id="inf_i_body_4">ⓘ</span>
+                                        <div class="info_box" id="info_box_body_4">キャッチコピーに使いたいキーワードを入れてください</div>
+                                    </span>
+                                    <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group" id="body-keyword3-group">
-                        <div class="flex justify-center">
-                            <h1 class="keyword"><textarea oninput="body_changeflag()" placeholder = "3段落" type="text" id="body-keyword3" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;"　value=""></textarea></h1>
-                            <span style="position:relative;">
-                                <span class="information_i" id="inf_i_body_3">ⓘ</span>
-                                <div class="info_box" id="info_box_body_3">キャッチコピーに使いたいキーワードを入れてください</div>
-                            </span>
-                            <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
+                        <div class="form-group">
+                            <div class="flex justify-center">
+                                <button onclick="return body_generate()" class="btn　p-0">
+                                    <!-- <i class="fa fa-btn fa-plus"></i> <h1 class="p-0" id="generate-button">生成</h1> -->
+                                    <h1 class="p-0" id="body-generate-button">生成</h1>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group" id="body-keyword4-group">
-                        <div class="flex justify-center">
-                            <h1 class="keyword"><textarea oninput="body_changeflag()" placeholder = "4段落" type="text" id="body-keyword4" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;"　value=""></textarea></h1>
-                            <span style="position:relative;">
-                                <span class="information_i" id="inf_i_body_4">ⓘ</span>
-                                <div class="info_box" id="info_box_body_4">キャッチコピーに使いたいキーワードを入れてください</div>
-                            </span>
-                            <img  onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">
+                        <div class="mt-2 bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                            <div class="p-6" >
+                                <!-- <input type="radio" name="body-candidate" checked="checked" style="float: left;"> -->
+                                
+                                <div class="cand_body" id = "body-candidate1">段落1の候補</div>
+                                <div style="float: right;">
+                                    <button id='body_ct1' class="ct" onclick="copyToClipBody(1)">Copy Text!</button>
+                                    <a  class="tweet-button" href="#" target="_blank_" rel="nofollow"><i class="fab fa-twitter"></i>Tweet</a>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <!-- <input type="radio" name="body-candidate" style="float: left;"> -->
+                                <div class="cand_body" id = "body-candidate2">段落2の候補</div>
+                                <div style="float: right;">
+                                    <button id='body_ct2' class="ct" onclick="copyToClipBody(2)">Copy Text!</button>
+                                    <a  class="tweet-button" href="#" target="_blank_" rel="nofollow"><i class="fab fa-twitter"></i>Tweet</a>
+                                </div>
+                            </div>
+                            <div class = "p-6">
+                                <!-- <input type="radio" name="body-candidate" style="float: left;"> -->
+                                <div class="cand_body" id = "body-candidate3">段落3の候補</div>
+                                <div style="float: right;">
+                                    <button id='body_ct3' class="ct" onclick="copyToClipBody(3)">Copy Text!</button>
+                                    <a  class="tweet-button" href="#" target="_blank_" rel="nofollow"><i class="fab fa-twitter"></i>Tweet</a>
+                                </div>
+                            </div>
+                            <div class = "p-6">
+                                <!-- <input type="radio" name="body-candidate" style="float: left;"> -->
+                                <div class="cand_body" id = "body-candidate4">段落4の候補</div>
+                                <div style="float: right;">
+                                    <button id='body_ct4' class="ct" onclick="copyToClipBody(4)">Copy Text!</button>
+                                    <a  class="tweet-button" href="#" target="_blank_" rel="nofollow"><i class="fab fa-twitter"></i>Tweet</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="flex justify-center">
-                        <button onclick="return body_generate()" class="btn　p-0">
-                            <!-- <i class="fa fa-btn fa-plus"></i> <h1 class="p-0" id="generate-button">生成</h1> -->
-                            <h1 class="p-0" id="body-generate-button">生成</h1>
-                        </button>
-                    </div>
-                </div>
-                <div class="mt-2 bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="p-6" >
-                        <!-- <input type="radio" name="body-candidate" checked="checked" style="float: left;"> -->
-                        
-                        <div class="cand_body" id = "body-candidate1">段落1の候補</div>
-                        <div style="float: right;">
-                            <button id='body_ct1' class="ct" onclick="copyToClipBody(1)">Copy Text!</button>
-                            <a  class="tweet-button" href="#" target="_blank_" rel="nofollow"><i class="fab fa-twitter"></i>Tweet</a>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <!-- <input type="radio" name="body-candidate" style="float: left;"> -->
-                        <div class="cand_body" id = "body-candidate2">段落2の候補</div>
-                        <div style="float: right;">
-                            <button id='body_ct2' class="ct" onclick="copyToClipBody(2)">Copy Text!</button>
-                            <a  class="tweet-button" href="#" target="_blank_" rel="nofollow"><i class="fab fa-twitter"></i>Tweet</a>
-                        </div>
-                    </div>
-                    <div class = "p-6">
-                        <!-- <input type="radio" name="body-candidate" style="float: left;"> -->
-                        <div class="cand_body" id = "body-candidate3">段落3の候補</div>
-                        <div style="float: right;">
-                            <button id='body_ct3' class="ct" onclick="copyToClipBody(3)">Copy Text!</button>
-                            <a  class="tweet-button" href="#" target="_blank_" rel="nofollow"><i class="fab fa-twitter"></i>Tweet</a>
-                        </div>
-                    </div>
-                    <div class = "p-6">
-                        <!-- <input type="radio" name="body-candidate" style="float: left;"> -->
-                        <div class="cand_body" id = "body-candidate4">段落4の候補</div>
-                        <div style="float: right;">
-                            <button id='body_ct4' class="ct" onclick="copyToClipBody(4)">Copy Text!</button>
-                            <a  class="tweet-button" href="#" target="_blank_" rel="nofollow"><i class="fab fa-twitter"></i>Tweet</a>
-                        </div>
-                    </div>
-                </div>
 
+                        <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
+                            <div class="text-center text-sm text-gray-500 sm:text-left">
+                                <div class="flex items-center">
+                                    <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-700">
+                                    <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
 
+                                    <a href="#" class="ml-1 underline text-gray-700">
+                                        Policy
+                                    </a>
 
+                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-700">
+                                        <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
 
-                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm text-gray-500 sm:text-left">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-700">
-                            <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
+                                    <a href="#" class="ml-1 underline text-gray-700">
+                                        Terms
+                                    </a>
+                                </div>
+                            </div>
 
-                            <a href="#" class="ml-1 underline text-gray-700">
-                                Policy
-                            </a>
+                            <div class="ml-4 text-center text-sm text-gray-700 sm:text-right sm:ml-0">
+                                α版
+                            </div>
 
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-700">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-
-                            <a href="#" class="ml-1 underline text-gray-700">
-                                Terms
-                            </a>
                         </div>
-                    </div>
-
-                    <div class="ml-4 text-center text-sm text-gray-700 sm:text-right sm:ml-0">
-                        α版
                     </div>
                 </div>
             </div>
@@ -458,7 +468,9 @@
         FIRST = true
         document.getElementById("generate-button").innerHTML = "生成";
         document.getElementsByTagName("button")[0].style.backgroundColor = "#dc143c";
-        // add_keyword()
+        if(document.myForm.mySelect.selectedIndex==0){
+            add_keyword()
+        }
     }
 
     function add_keyword(){
@@ -472,19 +484,20 @@
         }
         // console.log(empty_lst)
         if (empty_lst.length == 0){
-            keyword_form = '<div class="form-group" id="keyword'
-                        +(parseInt(lst[lst.length-1].id.slice(-1)) + 1).toString()
-                        +'-group">'
-                        +'<div class="flex justify-center" style="position:relative;">'
-                        +'<h1 class="keyword">'
-                        +'<input id="keyword'
-                        +(parseInt(lst[lst.length-1].id.slice(-1)) + 1).toString()
-                        +'" oninput="changeflag()" placeholder = "キーワードを追加" type="text" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;">'
-                        + '</h1>'
-                        + '<img onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">'
-                        + '</div>'
-                        + '</div>'
-            document.getElementById('keywords').insertAdjacentHTML('beforeend',keyword_form);
+            // keyword_form = '<div class="form-group" id="keyword'
+            //             +(parseInt(lst[lst.length-1].id.slice(-1)) + 1).toString()
+            //             +'-group">'
+            //             +'<div class="flex justify-center" style="position:relative;">'
+            //             +'<h1 class="keyword">'
+            //             +'<input id="keyword'
+            //             +(parseInt(lst[lst.length-1].id.slice(-1)) + 1).toString()
+            //             +'" oninput="changeflag()" placeholder = "キーワードを追加" type="text" class="form-control rounded-full" style="hight: 100%;width: 100%;font-size: 100%;">'
+            //             + '</h1>'
+            //             + '<img onclick="remove_keyword(this)" src="image/trash.svg" class="ml-1 mt-2 h-8 w-auto" alt="">'
+            //             + '</div>'
+            //             + '</div>'
+            make_keyword_form((parseInt(lst[lst.length-1].id.slice(-1)) + 1).toString(),'キーワードを追加','キャッチコピーに使いたいキーワードを入れてください')
+            // document.getElementById('keywords').insertAdjacentHTML('beforeend',keyword_form);
         }
         // automatically delete blanks
         else if (empty_lst.length > 2){
@@ -542,13 +555,15 @@
 
         if (FIRST){
 
-            var is_empty_keyword = false
-            var obj_keyword = document.getElementsByTagName('input')
-            for(var i=0;i<obj_keyword.length;i++){
-                keyword_text = obj_keyword[i].value
-                if(keyword_text==''){
-                    alert('全てのキーワードを埋めてください！')
-                    return false
+            if(document.myForm.mySelect.selectedIndex!=0){
+                var is_empty_keyword = false
+                var obj_keyword = document.getElementsByTagName('input')
+                for(var i=0;i<obj_keyword.length;i++){
+                    keyword_text = obj_keyword[i].value
+                    if(keyword_text==''){
+                        alert('全てのキーワードを埋めてください！')
+                        return false
+                    }
                 }
             }
 
@@ -732,6 +747,20 @@
         generate_assign(document.getElementById("body-candidate" + String(Number(para_i) + 1)),res_json["results"][para_i][array_index]["hypo"],true,array_index,para_i);
     }
 
+    function tabChange(e){
+        if(e.id=='catchon'){
+            document.getElementById('catch-copy').style.display='';
+            document.getElementById('body-copy').style.display='none';
+            document.getElementById('catchon').style.opacity='1';
+            document.getElementById('bodyon').style.opacity='0.5';
+        }else{
+            document.getElementById('body-copy').style.display='';
+            document.getElementById('catch-copy').style.display='none';
+            document.getElementById('catchon').style.opacity='0.5';
+            document.getElementById('bodyon').style.opacity='1';
+        }
+    }
+
 </script>
 
 
@@ -859,5 +888,21 @@
     }
     .pre_nex_css{
         cursor: pointer;
+    }
+    .tab{
+        float: left;
+        width: 50%;
+        height:100%;
+        border: solid 1px black;
+        cursor: pointer;
+    }
+    .catch-copy{
+        display: none;
+    }
+    #catchon{
+        opacity: 1;
+    }
+    #bodyon{
+        opacity:0.5;
     }
 </style>
